@@ -2,39 +2,40 @@ package main
 
 import (
 	"fmt"
-	"sort"
-	"strings"
 )
 
 func main() {
 
-	// strings package
+	x := 0
 
-	greeting := "hello there friends!"
+	// for is used for loops, even "while" loops:
+	for x < 5 {
+		fmt.Println("value of x is:", x)
+		x++
+	}
 
-	fmt.Println(strings.Contains(greeting, "hello")) // returns true/false if variable contains given string
-	fmt.Println(strings.ReplaceAll(greeting, "hello", "hi")) // replaces text in the given string (but doesn't alter the string)
-	fmt.Println(strings.ToUpper(greeting)) // replaces string to uppercase 
-	fmt.Println(strings.Index(greeting, "lo")) // finds the position of the given string
-	fmt.Println(strings.Split(greeting, "e")) // splits the string by the given element
+	// traditional for loops:
+	for i := 0; i < 6; i++ {
+		fmt.Println(x == i) // comparator
+	}
+	
+	
+	names := []string{"mario", "luigi", "yoshi", "peach"}
 
+	for j := 0; j < len(names); j++ {
+		fmt.Println(names)
+	}
 
-	// sort package
-	ages := []int{45, 20, 35, 30, 75, 60, 50, 25}
+	// for...in example
+	for index, value := range names {
+		fmt.Printf("the value at index %v is %v \n", index, value)
+	}
 
-	sort.Ints(ages) // sorts and alters the given slice
-	fmt.Println(ages)
+	// if you don't want index or value, you need to use a _ to ignore it
+	for _, value := range names {
+		fmt.Printf("the value is %v \n", value)
+		value = "new string" // This does not update the value of the slice - it is merely a copy of the value of the slice position
+	}
 
-	index := sort.SearchInts(ages, 30) // finds the position as index of the given value
-	fmt.Println(index)
-
-	index2 := sort.SearchInts(ages, 80)
-	fmt.Println(index2)
-
-	names := []string{"yoshi", "mario", "peach", "bowser", "luigi"} 
-
-	sort.Strings(names) // sorts and alters the given slice
-	fmt.Println(names)
-
-	fmt.Println(sort.SearchStrings(names, "bowser")) // gives position as index of given value
+	fmt.Println(names);
 }
