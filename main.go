@@ -6,29 +6,43 @@ var someName = "hello"
 
 func main() {
 
-	age := 35
-	name := "Bob"
+	// arrays
+	//var ages [3]int = [3]int{20, 25, 30} // arrays must be fixed lengths and the length can never be changed
 
-	// Print
-	fmt.Print("hello, ")
-	fmt.Print("world! \n")
-	fmt.Print("new line \n")
+	var ages = [3]int{20, 25, 30} // shorthand
 
-	// Println
-	fmt.Println("Hello, world!")
-	fmt.Println("Goodbye, world!")
+	names := [4]string{"yoshi", "mario", "peach", "bowser"}
 
-	fmt.Println("My age is", age, "and my name is", name)
-
-	// Printf (formatted strings) %_ = format specifier
-	fmt.Printf("My age is %v and my name is %v \n", age, name) // grabs the variables IN ORDER
-	fmt.Printf("My age is %q and my name is %q \n", age, name) // puts quotes around strings (doesn't work on variables)
-	fmt.Printf("My age is %v and my name is %v \n", age, name) 
-	fmt.Printf("Age is of type %T \n", age) // grabs the type of the variable
-	fmt.Printf("You scored %0.1f points! \n", 255.55) // grabs the float variable provided to the set decimal places
+	names[1] = "luigi"
 	
-	// Sprintf (save formatted strings)
-	var savedString = fmt.Sprintf("My age is %v and my name is %v \n", age, name)
-	fmt.Println("The saved string is:", savedString)
+	fmt.Println(ages, len(ages))
+	fmt.Println(names, len(names))
+
+	// slices (more like typical arrays from elsewhere) - arrays that can be manipulated
+
+	var scores = []int{100, 50, 60}
+
+	scores[1] = 75
+
+	scores = append(scores, 85) // append new value to slice (cannot do this for arrays)
+
+	fmt.Println(scores, len(scores))
+
+	// slice ranges
+	range1 := names[1:3] // new slice made of names array position 1-3 (does not include position 3)
+
+	fmt.Println(range1)
+
+	range2 := names[2:] // selects everything from the 2nd position to the end of the array
+
+	fmt.Println(range2)
+
+	range3 := names[:3] // selects everything up to but not including position 3
 	
+	fmt.Println(range3)
+
+	range1 = append(range1, "koopa")
+
+	fmt.Println(range1)
+
 }
