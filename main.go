@@ -1,48 +1,40 @@
 package main
 
-import "fmt"
-
-var someName = "hello"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 func main() {
 
-	// arrays
-	//var ages [3]int = [3]int{20, 25, 30} // arrays must be fixed lengths and the length can never be changed
+	// strings package
 
-	var ages = [3]int{20, 25, 30} // shorthand
+	greeting := "hello there friends!"
 
-	names := [4]string{"yoshi", "mario", "peach", "bowser"}
+	fmt.Println(strings.Contains(greeting, "hello")) // returns true/false if variable contains given string
+	fmt.Println(strings.ReplaceAll(greeting, "hello", "hi")) // replaces text in the given string (but doesn't alter the string)
+	fmt.Println(strings.ToUpper(greeting)) // replaces string to uppercase 
+	fmt.Println(strings.Index(greeting, "lo")) // finds the position of the given string
+	fmt.Println(strings.Split(greeting, "e")) // splits the string by the given element
 
-	names[1] = "luigi"
-	
-	fmt.Println(ages, len(ages))
-	fmt.Println(names, len(names))
 
-	// slices (more like typical arrays from elsewhere) - arrays that can be manipulated
+	// sort package
+	ages := []int{45, 20, 35, 30, 75, 60, 50, 25}
 
-	var scores = []int{100, 50, 60}
+	sort.Ints(ages) // sorts and alters the given slice
+	fmt.Println(ages)
 
-	scores[1] = 75
+	index := sort.SearchInts(ages, 30) // finds the position as index of the given value
+	fmt.Println(index)
 
-	scores = append(scores, 85) // append new value to slice (cannot do this for arrays)
+	index2 := sort.SearchInts(ages, 80)
+	fmt.Println(index2)
 
-	fmt.Println(scores, len(scores))
+	names := []string{"yoshi", "mario", "peach", "bowser", "luigi"} 
 
-	// slice ranges
-	range1 := names[1:3] // new slice made of names array position 1-3 (does not include position 3)
+	sort.Strings(names) // sorts and alters the given slice
+	fmt.Println(names)
 
-	fmt.Println(range1)
-
-	range2 := names[2:] // selects everything from the 2nd position to the end of the array
-
-	fmt.Println(range2)
-
-	range3 := names[:3] // selects everything up to but not including position 3
-	
-	fmt.Println(range3)
-
-	range1 = append(range1, "koopa")
-
-	fmt.Println(range1)
-
+	fmt.Println(sort.SearchStrings(names, "bowser")) // gives position as index of given value
 }
