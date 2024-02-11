@@ -6,37 +6,29 @@ var someName = "hello"
 
 func main() {
 
-	// strings
-	var nameOne string = "mario"
-	var nameTwo = "luigi"
-	var nameThree string
+	age := 35
+	name := "Bob"
 
-	nameOne = "peach"
-	nameThree = "bowser"
+	// Print
+	fmt.Print("hello, ")
+	fmt.Print("world! \n")
+	fmt.Print("new line \n")
 
-	nameFour := "yoshi"
+	// Println
+	fmt.Println("Hello, world!")
+	fmt.Println("Goodbye, world!")
 
-	fmt.Println(someName, nameOne, nameTwo, nameThree, nameFour)
+	fmt.Println("My age is", age, "and my name is", name)
 
-	// ints (integers)
-	var ageOne int = 20
-	var ageTwo = 30
-	ageThree := 40
-
-	fmt.Println(ageOne, ageTwo, ageThree)
-
-	// bits and memory
-	var numOne int8 = 25
-	var numTwo int8 = -128
-	var numThree uint8 = 255
-
-	fmt.Println(numOne, numTwo, numThree)
-
-	// floats
-	var scoreOne float32 = -1.5
-	var scoreTwo float64 = 3838383838388383.99
-	scoreThree := 1.5
-
-	fmt.Println(scoreOne, scoreTwo, scoreThree)
-
+	// Printf (formatted strings) %_ = format specifier
+	fmt.Printf("My age is %v and my name is %v \n", age, name) // grabs the variables IN ORDER
+	fmt.Printf("My age is %q and my name is %q \n", age, name) // puts quotes around strings (doesn't work on variables)
+	fmt.Printf("My age is %v and my name is %v \n", age, name) 
+	fmt.Printf("Age is of type %T \n", age) // grabs the type of the variable
+	fmt.Printf("You scored %0.1f points! \n", 255.55) // grabs the float variable provided to the set decimal places
+	
+	// Sprintf (save formatted strings)
+	var savedString = fmt.Sprintf("My age is %v and my name is %v \n", age, name)
+	fmt.Println("The saved string is:", savedString)
+	
 }
