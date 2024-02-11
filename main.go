@@ -6,36 +6,37 @@ import (
 
 func main() {
 
-	x := 0
+	age := 45
 
-	// for is used for loops, even "while" loops:
-	for x < 5 {
-		fmt.Println("value of x is:", x)
-		x++
+	// comparators
+
+	fmt.Println(age <= 50)
+	fmt.Println(age >= 50)
+	fmt.Println(age == 50)
+	fmt.Println(age != 50)
+
+	// if statements
+	if age < 30 {
+		fmt.Println("age is less than 30")
+	} else if age < 40 {
+		fmt.Println("age is less than 40")
+	} else {
+		fmt.Println("age is equal to or over 40")
 	}
 
-	// traditional for loops:
-	for i := 0; i < 6; i++ {
-		fmt.Println(x == i) // comparator
-	}
-	
-	
-	names := []string{"mario", "luigi", "yoshi", "peach"}
+	// nested if statements
+	names := []string{"mario", "luigi", "yoshi", "peach", "bowser"}
 
-	for j := 0; j < len(names); j++ {
-		fmt.Println(names)
-	}
-
-	// for...in example
 	for index, value := range names {
-		fmt.Printf("the value at index %v is %v \n", index, value)
-	}
+		if index == 1 {
+			fmt.Println("continuing at pos", index)
+			continue // if index == 1, it will break out of the if statement and continues back at pos 2
+		}
+		if index > 2 {
+			fmt.Println("breaking at pos", index)
+			break // breaks out of the loop completely, does not continue
+		}
 
-	// if you don't want index or value, you need to use a _ to ignore it
-	for _, value := range names {
-		fmt.Printf("the value is %v \n", value)
-		value = "new string" // This does not update the value of the slice - it is merely a copy of the value of the slice position
+		fmt.Printf("the value at pos %v is %v \n", index, value)
 	}
-
-	fmt.Println(names);
 }
