@@ -2,43 +2,36 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strings"
 )
 
-// Go global functions take in single variable arguments usually
+func getInitials(n string) (string, string) {
+	s := strings.ToUpper(n)
+	names := strings.Split(s, " ")
 
-func sayGreeting(n string) {
-	fmt.Printf("Good morning, %v \n", n)
-} 
+	var initials []string
 
-func sayBye(n string) {
-	fmt.Printf("Goodbye, %v \n", n)
-} 
-
-func cycleNames(n []string, f func(string)) {
-	for _, v := range n {
-		f(v)
+	for _, v := range names {
+		initials = append(initials, v[:1])
 	}
-} 
 
-// Need to specify what type of value you are returning before the function code:
-func circleArea(r float64) float64 {
-	return math.Pi * r * r
+	if len(initials) > 1 {
+		return initials[0], initials[1]
+	} 
+
+	return initials[0], "_"
+
 }
 
 func main() {
 
-	sayGreeting("Bob")
+	fname1, sname1 := getInitials("gilderoy lockhart")
+	fmt.Println(fname1, sname1)
 
-	sayBye("Jim")
+	fname2, sname2 := getInitials("Severus snape")
+	fmt.Println(fname2, sname2)
 
+	fname3, sname3 := getInitials("voldemort")
+	fmt.Println(fname3, sname3)
 
-	cycleNames([]string{"cloud", "tifa", "barret"}, sayGreeting)
-	cycleNames([]string{"cloud", "tifa", "barret"}, sayBye)
-
-	a1 := circleArea(10.5)
-	a2 := circleArea(15)
-
-	fmt.Println(a1, a2)
-	fmt.Printf("Circle 1 is %0.3f and Circle 2 is %0.3f \n", a1, a2)
 }
